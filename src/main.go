@@ -1,7 +1,24 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"runtime"
+)
+
+// import "strings"
 
 func main() {
-	fmt.Println("Hello world")
+	os := runtime.GOOS
+
+	switch os {
+	case "darwin":
+		fmt.Println("OS X")
+	case "linux":
+		fmt.Println("Linux")
+	default:
+		fmt.Println(os)
+	}
+
+	fmt.Println(os, runtime.NumGoroutine(), runtime.NumCPU(), runtime.GOARCH)
+
 }
