@@ -1,0 +1,20 @@
+[
+    {
+        "title": "Go Environment Configuration",
+        "body": "Go takes a unique approach to manage the code files with the introduction of a $GOPATH directory which contains all the go code in the machine.",
+        "author": {
+            "fullName": "Huyen Trang Tun",
+            "username": "tunht",
+            "email": "tunht@gmail.com"
+        }
+    },
+    {
+        "title": "Go basic knowledge",
+        "body": "Go is a compiled system programming language, and it belongs to the C-family",
+        "author": {
+            "fullName": "Huyen Trang Tun",
+            "username": "Thuannd",
+            "email": "ducthuan1202@gmail.com"
+        }
+    }
+]

@@ -1,5 +1,27 @@
 # Go Overview
 
+## Setup
+- Sau khi cài đặt GO, cần set GOPATH cho thư mục dự án
+```bash
+# thực hiện gán đường dẫn cho GOPATH
+
+export PATH=/usr/local/bin:$PATH
+export GOPATH=${HOME}/your_path/go_folder
+
+# áp dụng thay đổi
+
+source ~/.bash_profle
+```
+
+## Lưu ý trong Go
+- Khi viết package, đối với biến, phương thức, fields, ... nếu viết hoa chữ cái đầu tiên thì sẽ được coi như public và có thể gọi từ bên ngoài. Nếu viết thường, thì chỉ có thể sử dụng trong nội bộ gói đó.
+
+```bash
+export PATH=/usr/local/bin:$PATH
+
+source ~/.bash_profile
+```
+
 - `defer` yêu cầu thực thi 1 câu lệnh ở cuối cùng của function
 
 ```go
@@ -50,3 +72,12 @@ fmt.Println(i, *p, *c)
 ```
 
 - `struct` 
+
+- sử dụng kiểu any
+```go
+type any interface{}
+
+func dump(input any) {
+	Println(input)
+}
+```
