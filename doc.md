@@ -1,20 +1,18 @@
 ## 1. HTTP/HTTPS là gì?
 
 **HTTP**
-- Là viết tắt của `HyperText Transfer Protocol` - Giao thức truyền tải siêu văn bản.
+- Là viết tắt của `HyperText Transfer Protocol` - Giao thức truyền tải siêu văn bản. HTTP là một giao thức ứng dụng của bộ giao thức TCP/IP (giao thức nền tảng cho internet)
 
 - Là một trong các giao thức chuẩn về mạng Internet, dùng để trao đổi thông tin giữa máy chủ (server) và máy khách (client).
 
-- HTTP là một giao thức ứng dụng của bộ giao thức TCP/IP (giao thức nền tảng cho internet).
-
-- HTTP là một giao thức không có trạng thái - `stateless protocol`, hay nói cách khác, request sau không biết gì về request trước đó, cho dù cả 2 request có thể cùng từ 1 client. Để giải quyết vấn đề này, các ứng dụng web sửu dụng cookie để duy trì trạng thái kết nối.
+- HTTP là một giao thức không có trạng thái - `stateless protocol`, hay nói cách khác, request sau không biết gì về request trước đó, cho dù cả 2 request có thể cùng từ 1 client. Để giải quyết vấn đề này, các ứng dụng web sử dụng cookie để duy trì trạng thái kết nối.
 
 **HTTPS**
 - Là viết tắt của `HyperText Transfer Protocol Secure`.
 
 - Là HTTP + giao thức bảo mật SSL hay TSL cho phép trao đổi thông tin một các bảo mật trên internet.
 
-- Giao thức HTTPS sử dụng port `443`, giúp bảo đảm các tính chât sau của thông tin:
+- Giao thức HTTPS sử dụng port `443`, giúp bảo đảm các tính chất sau của thông tin:
 
     - `Confientiality` - bảo mật: phương thức này mã hóa gói tin, bảo đảm các thông điệp trao đổi giữa cliet và server không bị bên thứ 3 đọc được.
 
@@ -44,7 +42,7 @@
 ## 3. URL là gì?
 - Là viết tắt của `Uniform Resource Locator`, hiểu nôm na là địa chỉ cụ thể để truy cập tới một tài nguyên trên mạng máy tính.
 
-- `URL` gồm có 5 phần: (1)scheme, (2)host, (3)port, (4)uri (hoặc path) chính
+- `URL` gồm có 5 phần chính: (1)scheme, (2)host, (3)port, (4)uri (hoặc path) và (5)query-string
 
     + `scheme`: là giao thức được sử dụng (http, https, ftp, ...)
 
@@ -55,7 +53,6 @@
     + `uri`: Uniform Resource Identifier - là một chuỗi ký tự dùng để xác định tài nguyên.
 
     + `query-string`: là phần dữ liệu kèm theo trong lần request đó.
-
 
 
 ```bash
