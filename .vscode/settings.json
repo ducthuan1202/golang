@@ -1,0 +1,7 @@
+{
+    "go.autocompleteUnimportedPackages": true,
+    "go.docsTool": "godoc",
+    "[go]": {
+        "editor.formatOnSave": true
+    }
+}
