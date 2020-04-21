@@ -7,7 +7,7 @@ import (
 	"net/http"
 )
 
-const logPath = "src/logs"
+const logPath = "logs"
 
 func init(){	
 	if _, err := os.Stat(logPath); os.IsNotExist(err) {		

@@ -4,12 +4,12 @@
 - Sau khi cài đặt GO, cần set GOPATH cho thư mục dự án
 ```bash
 # thực hiện gán đường dẫn cho GOPATH
-
 export PATH=/usr/local/bin:$PATH
-export GOPATH=${HOME}/your_path/go_folder
+
+# ví dụ đường dẫn trên máy Mac
+export GOPATH=${HOME}/Documents/mygo
 
 # áp dụng thay đổi
-
 source ~/.bash_profle
 ```
 

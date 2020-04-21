@@ -2,7 +2,7 @@ package main
 
 import (
 	"net/http"
-	"packages/middleware"
+	"packages/middleware"	
 	"os"
 	"html/template"
 	"fmt"
@@ -21,11 +21,24 @@ func init(){
 
 	// Set timezone
 	os.Setenv("TZ", "Asia/Ho_Chi_Minh")
+
+	// gán thư mục static là static
+	fs := http.FileServer(http.Dir("./static"))
+	http.Handle("/static/", http.StripPrefix("/static/", fs))
+
+	// gán favicon.ico render static file
+	http.HandleFunc("/favicon.ico", func(w http.ResponseWriter, r *http.Request) {
+		http.ServeFile(w, r, "static/img/favicon.ico")
+	})
 }
 
 func main() {
+
+	// combine middleware with action handle
 	finalHandler := http.HandlerFunc(actionHome)
-  	http.Handle("/", middleware.AddLogRaquest(finalHandler))
+
+	http.Handle("/", middleware.AddLogRaquest(finalHandler))
+	  
   	http.ListenAndServe(":3000", nil)
 }
 
@@ -36,12 +49,15 @@ func actionHome(w http.ResponseWriter, r *http.Request) {
 
 	t, err := template.ParseFiles("src/views/tmp.html")	
 
+	fmt.Println(t)
+
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
 
 	t.ExecuteTemplate(os.Stdout, "tmp", p)
+	fmt.Println(t)
 
 }
   
