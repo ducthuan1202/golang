@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"packages/middleware"	
 	"os"
-	"html/template"
+	"text/template"
 	"fmt"
 )
 
@@ -60,4 +60,5 @@ func actionHome(w http.ResponseWriter, r *http.Request) {
 	fmt.Println(t)
 
 }
+
   

@@ -1,10 +1,13 @@
 package main
 
 import (
+	"packages/header"
+	qb "packages/querybuilder"
 	"encoding/json"
 	"fmt"
 	"io/ioutil"
 	"net/http"
+	"text/template"
 	"os"
 	"strconv"
 )
@@ -28,12 +31,15 @@ func main() {
 
 	loadPostsData()
 
-	// http.HandleFunc("/", getAllPosts)
+	http.HandleFunc("/", getAllPosts)
 
 	http.HandleFunc("/post", getPost)
 
+	http.HandleFunc("/ads.js", actionAds)
+
 	http.ListenAndServe(":3000", nil)
 }
+////////////////////////////////////////////////////////////////////////////////////////
 
 func getPost(w http.ResponseWriter, r *http.Request) {
 
@@ -67,6 +73,46 @@ func getAllPosts(w http.ResponseWriter, r *http.Request) {
 	json.NewEncoder(w).Encode(posts)
 }
 
+// parser 1 file sau đó execute
+func actionAds(w http.ResponseWriter, r *http.Request)  {
+	type Ads struct {
+		Width	int
+		Height 	int 
+		Text 	string
+	}
+	
+	defer showErr()
+	// w.Header().Set("Content-Type", "application/javascript")	
+	w.Header().Set(header.ContentType("javascript"))
+
+	tmpl, err := template.ParseFiles("src/views/camp.tpl")
+	checkErr(err)
+
+	tbl := qb.Table("users")
+	fmt.Println(tbl)
+
+	var tool qb.QueryBuilder
+
+	tool.
+		Select("id", "name", "email").
+		AddSelect("role", "status").
+		AddSelect("   COUNT(id) AS 'total'    ").
+		From("users").
+		Where("id", ">", "10").
+		AndWhere("status", "=", "1").
+		OrWhere("role", "=", "admin")
+
+	data := Ads {
+		Width: 300,
+		Height: 250,
+		Text: fmt.Sprintf("%s", tool.GetQueryString()),
+	}
+
+	tmpl.Execute(w, data)
+}
+
+////////////////////////////////////////////////////////////////////////////////////////
+
 func loadPostsData() {
 	jsonFile, err := os.Open("src/json/posts.json")
 
@@ -78,4 +124,16 @@ func loadPostsData() {
 
 	byteValue, _ := ioutil.ReadAll(jsonFile)
 	json.Unmarshal([]byte(byteValue), &posts)
+}
+
+func checkErr(err error){
+	if err != nil {
+		panic(err)
+	}
+}
+
+func showErr(){
+	if r := recover(); r != nil {
+		fmt.Println(r)
+	}
 }
