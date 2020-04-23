@@ -1,1 +1,3 @@
 /logs/*.log
+/pkg
+/src/github.com/*
