@@ -43,3 +43,22 @@ float32 float64 // số thập phân
 
 complex64 complex128
 ```
+
+## Quản lý packages
+```bash
+go mod init github.com/ducthuan1202/bidgear
+```
+
+Dòng lệnh trên sẽ tạo ra 1 file `go.mod` tại thư mục hiện hành với nội dung như sau:
+```mod
+module github.com/ducthuan1202/bidgear
+
+go 1.13
+```
+
+Với mọi thư mục có chứa file `go.mod` thì Go sẽ coi đó là 1 package, và file `go.mod` là file 
+quản lý các packages phụ thuộc (dependencies) - giống như file `package.json` trong Nodejs
+
+Nếu trong bất kỳ file .go nào ở trong thư mục có import thư viện (không phải package có sẵn trong Go) 
+thì thông tin đều được thêm vào đây. Trong lần chạy file go tiếp hệ, Go command sẽ tự động download các gói 
+về và install vào thư mục `pkg/mod` tại thư mục GOROOT
